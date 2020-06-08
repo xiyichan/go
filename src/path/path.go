@@ -175,7 +175,19 @@ func Ext(path string) string {
 	}
 	return ""
 }
-
+//ExtAll returns the file name extension used by path.
+//return all extensions
+func ExtAll(path string) []string{
+	j:=len(path)
+	var ext []string
+	for i:=j-1;i>=0 && path[i]!= '/'; i--{
+		if path[i]=='.'{
+			ext=append(ext,path[i:j])
+			j=i
+		}
+	}
+	return ext
+}
 // Base returns the last element of path.
 // Trailing slashes are removed before extracting the last element.
 // If the path is empty, Base returns ".".
